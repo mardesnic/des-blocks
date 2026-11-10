@@ -16,6 +16,8 @@ import {
   type Stats,
 } from './lib/game';
 import { STRINGS, detectLang } from './lib/i18n';
+import { popMenu, pushMenu, useBackButton } from './lib/use-back-button';
+import { useCheer } from './lib/use-cheer';
 import { useStoredState } from './lib/use-stored-state';
 import { useWakeLock } from './lib/use-wake-lock';
 
@@ -31,10 +33,20 @@ export default function App() {
     initialSettings
   );
   const [stats, setStats] = useStoredState<Stats>('blocks-stats', initialStats);
-  const [view, setView] = useState<View>(game ? 'play' : 'new');
+  const [view, setViewState] = useState<View>(game ? 'play' : 'new');
+  // Menus open over the game, so the phone's Back button closes them.
+  const setView = (next: View) => {
+    if (next === 'play') popMenu();
+    else pushMenu();
+    setViewState(next);
+  };
+  useBackButton(() => {
+    if (game) setViewState('play');
+  });
   const [history, setHistory] = useState<Game[]>([]);
   const [celebrating, setCelebrating] = useState(false);
   useWakeLock();
+  const cheer = useCheer(settings.sound);
 
   const lang = settings.language === 'auto' ? detectLang() : settings.language;
   const t = STRINGS[lang];
@@ -59,6 +71,7 @@ export default function App() {
     if (next.solved) {
       setStats(recordWin(stats, next));
       setCelebrating(true);
+      cheer();
     }
     setHistory((h) => [...h, game]);
     setStore({ game: next });
