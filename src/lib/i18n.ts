@@ -76,7 +76,7 @@ const hr: Strings = {
     count('hr', n, { one: 'potez', few: 'poteza', other: 'poteza' }),
   star: 'Blok sa zvijezdom',
   block: 'Blok',
-  undo: 'Vrati',
+  undo: 'Poništi',
   clear: 'Ispočetka',
   solved: 'Bravo!',
   solvedIn: (n: number) =>
