@@ -1,9 +1,26 @@
+import { execSync } from 'node:child_process';
+
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vite.dev/config/
+// The version shown in Settings: the date and short hash of the last
+// commit, so every deploy gets a new one without bumping anything.
+const git = (args: string) => {
+  try {
+    return execSync(`git ${args}`, { encoding: 'utf8' }).trim();
+  } catch {
+    return '';
+  }
+};
+const version =
+  [git('log -1 --format=%cs'), git('rev-parse --short HEAD')]
+    .filter(Boolean)
+    .join(' · ') || 'dev';
+
 export default defineConfig({
+  define: { __VERSION__: JSON.stringify(version) },
   base: '/des-blocks/',
   plugins: [
     react(),
@@ -17,8 +34,7 @@ export default defineConfig({
         id: 'des-blocks',
         name: 'Blocks',
         short_name: 'Blocks',
-        description:
-          'A sliding block puzzle game for kids that works offline',
+        description: 'A sliding block puzzle game for kids that works offline',
         theme_color: '#0f8a7a',
         background_color: '#f4f5f7',
         display: 'standalone',

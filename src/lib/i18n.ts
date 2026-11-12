@@ -55,6 +55,7 @@ const en = {
   solvedColumn: 'Solved',
   allGames: 'All games',
   source: 'Source',
+  version: 'Version',
 };
 
 export type Strings = typeof en;
@@ -92,6 +93,7 @@ const hr: Strings = {
   solvedColumn: 'Riješeno',
   allGames: 'Sve igre',
   source: 'Izvorni kod',
+  version: 'Verzija',
 };
 
 export const STRINGS: Record<Lang, Strings> = { en, hr };
