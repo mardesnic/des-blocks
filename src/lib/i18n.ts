@@ -27,8 +27,7 @@ const en = {
   title: 'Blocks',
   newGame: 'New game',
   settings: 'Settings',
-  cancel: 'Cancel',
-  done: 'Done',
+  close: 'Close',
   levels: {
     tiny: 'Very easy',
     easy: 'Easy',
@@ -64,8 +63,7 @@ const hr: Strings = {
   title: 'Blokovi',
   newGame: 'Nova igra',
   settings: 'Postavke',
-  cancel: 'Odustani',
-  done: 'Gotovo',
+  close: 'Zatvori',
   levels: {
     tiny: 'Vrlo lagano',
     easy: 'Lagano',
