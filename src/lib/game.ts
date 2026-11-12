@@ -5,7 +5,6 @@ import {
   type Level,
   type Positions,
 } from './blocks';
-import type { Language } from './i18n';
 
 export type Game = {
   level: Level;
@@ -14,9 +13,9 @@ export type Game = {
   solved: boolean;
 };
 
-export type Settings = { language: Language; sound: boolean };
+export type Settings = { sound: boolean };
 
-export const initialSettings: Settings = { language: 'auto', sound: true };
+export const initialSettings: Settings = { sound: true };
 
 export type Stats = { [D in Difficulty]: { solved: number } };
 
