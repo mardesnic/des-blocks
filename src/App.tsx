@@ -18,6 +18,7 @@ import {
 import { STRINGS, detectLang } from './lib/i18n';
 import { popMenu, pushMenu, useBackButton } from './lib/use-back-button';
 import { useCheer } from './lib/use-cheer';
+import { useSettings } from './lib/use-settings';
 import { useStoredState } from './lib/use-stored-state';
 import { useWakeLock } from './lib/use-wake-lock';
 
@@ -28,7 +29,7 @@ export default function App() {
   // this storage.
   const [store, setStore] = useStoredState<{ game?: Game }>('blocks', {});
   const { game } = store;
-  const [settings, setSettings] = useStoredState<Settings>(
+  const [settings, setSettings] = useSettings<Settings>(
     'blocks-settings',
     initialSettings
   );
