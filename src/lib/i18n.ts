@@ -43,7 +43,7 @@ const en = {
   solved: 'Well done!',
   solvedIn: (n: number) =>
     `Out in ${count('en', n, { one: 'move', other: 'moves' })}`,
-  next: 'Next level',
+  next: 'Next',
   changeLevel: 'Change level',
   language: 'Language',
   automatic: 'Automatic',
@@ -80,7 +80,7 @@ const hr: Strings = {
   solved: 'Bravo!',
   solvedIn: (n: number) =>
     `Vani u ${count('hr', n, { one: 'potezu', few: 'poteza', other: 'poteza' })}`,
-  next: 'Sljedeća razina',
+  next: 'Dalje',
   changeLevel: 'Promijeni razinu',
   language: 'Jezik',
   automatic: 'Automatski',
