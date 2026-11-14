@@ -151,7 +151,7 @@ export default function App() {
             />
           </div>
 
-          {game.solved ? (
+          {game.solved && (
             <section className='card solved'>
               <h2>{t.solved}</h2>
               <p className='muted'>{t.solvedIn(game.moves)}</p>
@@ -170,7 +170,11 @@ export default function App() {
                 </button>
               </div>
             </section>
-          ) : (
+          )}
+          <div
+            className={game.solved ? 'under under--hidden' : 'under'}
+            inert={!!game.solved}
+          >
             <div className='bar'>
               <p className='goal'>
                 {game.moves ? t.moves(game.moves) : t.goal}
@@ -194,7 +198,7 @@ export default function App() {
                 </button>
               </div>
             </div>
-          )}
+          </div>
         </>
       )}
 
